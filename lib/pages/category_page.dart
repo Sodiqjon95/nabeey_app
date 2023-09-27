@@ -98,47 +98,55 @@ class _CategoryPageState extends State<CategoryPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.only(top: 25, left: 20),
-                    margin: const EdgeInsets.only(left: 20, top: 30),
-                    height: 120,
-                    width: 168,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 10.0,
-                        ),
-                      ],
-                    ),
-                    child: const Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Icon(Feather.edit_3),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Text(
-                              "Maqola",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                  GestureDetector(
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 25, left: 20),
+                      margin: const EdgeInsets.only(left: 20, top: 30),
+                      height: 120,
+                      width: 168,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10.0,
+                          ),
+                        ],
+                      ),
+                      child: const Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Feather.edit_3),
+                              SizedBox(
+                                height: 15,
                               ),
-                            ),
-                          ],
-                        ),
-                        // Image(
-                        //     image: AssetImage("assets/images/Mask.png")
-                        // )
-                      ],
+                              Text(
+                                "Maqola",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                          // Image(
+                          //     image: AssetImage("assets/images/Mask.png")
+                          // )
+                        ],
+                      ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, VideoPage.id),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const VideoPage(),
+                        ),
+                      );
+                    },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(right: 20, top: 30),
@@ -178,7 +186,13 @@ class _CategoryPageState extends State<CategoryPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, AudioPage.id),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AudioPage(),
+                        ),
+                      );
+                    },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(left: 20, top: 18),
@@ -212,38 +226,40 @@ class _CategoryPageState extends State<CategoryPage> {
                       ),
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(top: 25, left: 20),
-                    margin: const EdgeInsets.only(right: 20, top: 18),
-                    height: 120,
-                    width: 168,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 10.0,
-                        ),
-                      ],
-                    ),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(Feather.book_open),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          "Kitob",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
+                  GestureDetector(
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 25, left: 20),
+                      margin: const EdgeInsets.only(right: 20, top: 18),
+                      height: 120,
+                      width: 168,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10.0,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(Feather.book_open),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            "Kitob",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ],
