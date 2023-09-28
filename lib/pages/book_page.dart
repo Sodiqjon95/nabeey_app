@@ -1,6 +1,8 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:icons_flutter/icons_flutter.dart';
+import 'package:nabeey_app/pages/bookInside.dart';
 
 class BookPage extends StatefulWidget {
   const BookPage({super.key});
@@ -99,52 +101,61 @@ class _BookPageState extends State<BookPage> {
           child: ListView.builder(
             itemCount: 5,
             itemBuilder: (context, i) {
-              return Row(
-                children: [
-                  Container(
-                    margin:
-                        const EdgeInsets.only(left: 20, bottom: 20, right: 14),
-                    height: 148,
-                    width: 121,
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: NetworkImage(
-                              "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/b0b946d46ce4276c12e547878ab2d2f0bc841169"),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        width: 1,
-                        style: BorderStyle.solid,
-                        color: Colors.grey,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const BookInside(),
+                    ),
+                  );
+                },
+                child: Row(
+                  children: [
+                    Container(
+                      margin:
+                      const EdgeInsets.only(left: 20, bottom: 20, right: 14),
+                      height: 148,
+                      width: 121,
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                            image: NetworkImage(
+                                "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/b0b946d46ce4276c12e547878ab2d2f0bc841169"),
+                            fit: BoxFit.cover),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          width: 1,
+                          style: BorderStyle.solid,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 185,
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Oltin silsila",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text("Shayx Muhammad Sodiq Muhammad Yusuf",
+                    Container(
+                      width: 185,
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Oltin silsila",
                             style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ))
-                      ],
-                    ),
-                  )
-                ],
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text("Shayx Muhammad Sodiq Muhammad Yusuf",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ))
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               );
             },
           ),
         ),
       ],
-    ));
+    ),);
   }
 }
