@@ -3,6 +3,7 @@ import 'package:icons_flutter/icons_flutter.dart';
 import 'package:nabeey_app/pages/article_page.dart';
 import 'package:nabeey_app/pages/audio_page.dart';
 import 'package:nabeey_app/pages/book_page.dart';
+import 'package:nabeey_app/pages/profile_page.dart';
 import 'package:nabeey_app/pages/video_page.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -236,7 +237,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const BookPage(),
+                          builder: (context) => const ProfilePage(),
                         ),
                       );
                     },
