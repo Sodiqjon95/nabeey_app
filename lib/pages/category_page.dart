@@ -141,9 +141,6 @@ class _CategoryPageState extends State<CategoryPage> {
                               ),
                             ],
                           ),
-                          // Image(
-                          //     image: AssetImage("assets/images/Mask.png")
-                          // )
                         ],
                       ),
                     ),
