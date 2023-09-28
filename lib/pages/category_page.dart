@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_flutter/icons_flutter.dart';
 import 'package:nabeey_app/pages/article_page.dart';
 import 'package:nabeey_app/pages/audio_page.dart';
 import 'package:nabeey_app/pages/book_page.dart';
 import 'package:nabeey_app/pages/video_page.dart';
+import 'package:nabeey_app/services/bloc_service.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -16,6 +18,7 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
+    final navigationBloc = BlocProvider.of<NavigationBloc>(context);
     return Scaffold(
       body: Column(
         children: [
@@ -102,11 +105,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const ArticlePage(),
-                        ),
-                      );
+                      navigationBloc.add(NavigationEvent.navigateToArticlePage);
                     },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
@@ -147,11 +146,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const VideoPage(),
-                        ),
-                      );
+                      navigationBloc.add(NavigationEvent.navigateToVideoPage);
                     },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
@@ -193,11 +188,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const AudioPage(),
-                        ),
-                      );
+                      navigationBloc.add(NavigationEvent.navigateToAudioPage);
                     },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
@@ -234,11 +225,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const BookPage(),
-                        ),
-                      );
+                      navigationBloc.add(NavigationEvent.navigateToBookPage);
                     },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
