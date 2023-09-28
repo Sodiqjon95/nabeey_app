@@ -5,6 +5,7 @@ import 'package:nabeey_app/pages/audio_page.dart';
 import 'package:nabeey_app/pages/book_page.dart';
 import 'package:nabeey_app/pages/category_page.dart';
 import 'package:nabeey_app/pages/home_page.dart';
+import 'package:nabeey_app/pages/signup_page.dart';
 import 'package:nabeey_app/pages/video_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_flutter/icons_flutter.dart';
