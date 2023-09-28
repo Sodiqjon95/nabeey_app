@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nabeey_app/pages/article_page.dart';
 import 'package:nabeey_app/pages/audio_page.dart';
+import 'package:nabeey_app/pages/book_page.dart';
 import 'package:nabeey_app/pages/category_page.dart';
 import 'package:nabeey_app/pages/content_page.dart';
 import 'package:nabeey_app/pages/home_page.dart';
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
         CategoryPage.id: (context) => const CategoryPage(),
         AudioPage.id: (context) => const AudioPage(),
         VideoPage.id: (context) => const VideoPage(),
+        ArticlePage.id: (context) => const ArticlePage(),
+        BookPage.id: (context) => const BookPage(),
       },
     );
   }

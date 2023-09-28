@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:icons_flutter/icons_flutter.dart';
+import 'package:nabeey_app/pages/article_page.dart';
 import 'package:nabeey_app/pages/audio_page.dart';
+import 'package:nabeey_app/pages/book_page.dart';
 import 'package:nabeey_app/pages/video_page.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -99,6 +101,13 @@ class _CategoryPageState extends State<CategoryPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ArticlePage(),
+                        ),
+                      );
+                    },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(left: 20, top: 30),
@@ -227,6 +236,13 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   ),
                   GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const BookPage(),
+                        ),
+                      );
+                    },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(right: 20, top: 18),
