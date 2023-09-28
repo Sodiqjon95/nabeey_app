@@ -3,8 +3,10 @@ import 'package:nabeey_app/pages/article_page.dart';
 import 'package:nabeey_app/pages/audio_page.dart';
 import 'package:nabeey_app/pages/book_page.dart';
 import 'package:nabeey_app/pages/category_page.dart';
+import 'package:nabeey_app/pages/confirm_page.dart';
 import 'package:nabeey_app/pages/content_page.dart';
 import 'package:nabeey_app/pages/home_page.dart';
+import 'package:nabeey_app/pages/signup_page.dart';
 import 'package:nabeey_app/pages/video_page.dart';
 
 void main() {
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
         VideoPage.id: (context) => const VideoPage(),
         ArticlePage.id: (context) => const ArticlePage(),
         BookPage.id: (context) => const BookPage(),
+        SignUpPage.id: (context) => const SignUpPage(),
+        ConfirmPage.id: (context) => const ConfirmPage(),
       },
     );
   }
