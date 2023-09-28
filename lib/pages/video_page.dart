@@ -129,8 +129,7 @@ class _VideoPageState extends State<VideoPage> {
                   ),
                 ),
                 Container(
-                  padding:
-                      const EdgeInsets.only(left: 12, top: 20, bottom: 20),
+                  padding: const EdgeInsets.only(left: 12, top: 20, bottom: 20),
                   height: 200,
                   child: ListView.builder(
                     itemCount: 5,
@@ -155,7 +154,9 @@ class _VideoPageState extends State<VideoPage> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 6,),
+                          const SizedBox(
+                            height: 6,
+                          ),
                           Container(
                             width: 100,
                             child: const Text(
@@ -185,7 +186,8 @@ class _VideoPageState extends State<VideoPage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 20, bottom: 24, left: 20, right: 20),
+                  margin: const EdgeInsets.only(
+                      top: 20, bottom: 24, left: 20, right: 20),
                   height: 1,
                   color: const Color.fromRGBO(0, 0, 0, 0.2),
                 ),
@@ -220,8 +222,7 @@ class _VideoPageState extends State<VideoPage> {
                   ),
                 ),
                 Container(
-                  padding:
-                      const EdgeInsets.only(left: 12, top: 20, bottom: 20),
+                  padding: const EdgeInsets.only(left: 12, top: 20, bottom: 20),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerRight,
