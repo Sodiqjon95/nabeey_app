@@ -1,7 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:icons_flutter/icons_flutter.dart';
-import 'package:nabeey_app/pages/content_page.dart';
+//import 'package:icons_flutter/icons_flutter.dart';
+import 'package:nabeey_app/pages/category_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,90 +11,88 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  final PageController _pageController = PageController();
-  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        children: [
-          ContentPage(_navigatorKey, _currentIndex),
-          ContentPage(_navigatorKey, _currentIndex),
-          ContentPage(_navigatorKey, _currentIndex),
-          ContentPage(_navigatorKey, _currentIndex),
-          ContentPage(_navigatorKey, _currentIndex),
-        ],
-      ),
-      bottomNavigationBar: Container(
-        height: 60.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10.0,
-              spreadRadius: 5.0,
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: 10.0,
-              sigmaY: 10.0,
-            ),
-            child: BottomNavigationBar(
-              selectedItemColor: const Color(0xFFF59C16),
-              unselectedItemColor: const Color.fromRGBO(17, 17, 17, 0.5),
-              showUnselectedLabels: true,
-              currentIndex: _currentIndex,
-              onTap: (index) {
-                _pageController.jumpToPage(index);
-              },
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Feather.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Feather.help_circle),
-                  label: 'Quiz',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Feather.activity),
-                  label: 'Rating',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Feather.user),
-                  label: 'Profile',
-                ),
-              ],
-            ),
+      appBar: AppBar(
+        title: const Text(
+          'Nabeey App',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
+        elevation: 0,
       ),
+      body: Container(
+        margin: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, i) {
+            return AspectRatio(
+              aspectRatio: 1.7,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CategoryPage(),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: const DecorationImage(
+                      image: NetworkImage(
+                          "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/4ec532c109d74c7953455693d1feadadd53f92ea"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: const LinearGradient(
+                        begin: Alignment.bottomRight,
+                        colors: [
+                          Color.fromRGBO(0, 0, 0, 1),
+                          Color.fromRGBO(0, 0, 0, 0.0),
+                        ],
+                      ),
+                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Lorem Ipsum',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Text(
+                          'It is a long established fact',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+      
     );
   }
 }
