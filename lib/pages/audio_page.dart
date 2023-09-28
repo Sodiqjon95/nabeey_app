@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:icons_flutter/icons_flutter.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class AudioPage extends StatefulWidget {
   const AudioPage({super.key});
@@ -13,6 +15,29 @@ class AudioPage extends StatefulWidget {
 class _AudioPageState extends State<AudioPage> {
   double _sliderValue = 0.0;
   bool isExpanded = false;
+  var ppIcon = Icons.play_circle;
+  final player = AudioPlayer();
+  Duration? duration;
+  void playAudioFromUrl(String url) async {
+    await player.play(
+      UrlSource(url),
+    );
+    duration = await player.getDuration();
+    Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+      player.getCurrentPosition().then((Duration? position) {
+        if (position != null) {
+          setState(() {
+            _sliderValue = position.inSeconds.toDouble();
+          });
+        }
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,11 +139,13 @@ class _AudioPageState extends State<AudioPage> {
                     ),
                   ),
                   child: ExpansionTileTheme(
-                    data: ExpansionTileThemeData(),
+                    data: const ExpansionTileThemeData(),
                     child: ExpansionTile(
                       onExpansionChanged: (expanded) {
                         setState(() {
                           isExpanded = expanded;
+                          player.setSourceUrl(
+                              'https://samplelib.com/lib/preview/mp3/sample-3s.mp3');
                         });
                       },
                       clipBehavior: Clip.none,
@@ -161,19 +188,46 @@ class _AudioPageState extends State<AudioPage> {
                                   ),
                                   child: Slider(
                                     value: _sliderValue,
-                                    onChanged: (newValue) {
+                                    onChanged: (double value) {
                                       setState(() {
-                                        _sliderValue = newValue;
+                                        _sliderValue = value;
                                       });
+
+                                      player.seek(
+                                        Duration(
+                                          seconds: value.toInt(),
+                                        ),
+                                      );
                                     },
                                     min: 0.0,
-                                    max: 1.0,
+                                    max: duration != null
+                                        ? duration!.inSeconds.toDouble()
+                                        : 0.0,
                                   ),
                                 ),
-                                const Icon(
-                                  Icons.play_circle,
-                                  size: 55,
-                                  color: Color(0xfff59c16),
+                                GestureDetector(
+                                  onTap: () {
+                                    player.state == PlayerState.paused ||
+                                            player.state ==
+                                                PlayerState.completed
+                                        ? playAudioFromUrl(
+                                            'https://samplelib.com/lib/preview/mp3/sample-3s.mp3')
+                                        : player.pause();
+                                    setState(() {
+                                      if (player.state == PlayerState.paused ||
+                                          player.state ==
+                                              PlayerState.completed) {
+                                        ppIcon = Icons.pause_circle;
+                                      } else {
+                                        ppIcon = Icons.play_circle;
+                                      }
+                                    });
+                                  },
+                                  child: Icon(
+                                    ppIcon,
+                                    size: 55,
+                                    color: const Color(0xfff59c16),
+                                  ),
                                 ),
                               ],
                             ),
