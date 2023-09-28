@@ -114,7 +114,7 @@ class _AudioPageState extends State<AudioPage> {
                     ),
                   ),
                   child: ExpansionTileTheme(
-                    data: ExpansionTileThemeData(),
+                    data: const ExpansionTileThemeData(),
                     child: ExpansionTile(
                       onExpansionChanged: (expanded) {
                         setState(() {
