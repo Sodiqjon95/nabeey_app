@@ -24,11 +24,12 @@ enum NavigationEvent {
 }
 
 class NavigationBloc extends Bloc<NavigationEvent, int> {
+  
   NavigationBloc() : super(0) {
     on<NavigationEvent>(
       (event, emit) {
         if (event == NavigationEvent.navigateToHomePage) {
-          emit(0);
+          (0);
         } else if (event == NavigationEvent.navigateToCategoryPage) {
           emit(1);
         } else if (event == NavigationEvent.navigateToArticlePage) {
@@ -48,6 +49,29 @@ class NavigationBloc extends Bloc<NavigationEvent, int> {
         }
       },
     );
+    // on<NavigationEvent>(
+    //   (event, yield) {
+    //     if (event == NavigationEvent.navigateToHomePage) {
+    //       (0);
+    //     } else if (event == NavigationEvent.navigateToCategoryPage) {
+    //       yield(1);
+    //     } else if (event == NavigationEvent.navigateToArticlePage) {
+    //       yield(2);
+    //     } else if (event == NavigationEvent.navigateToVideoPage) {
+    //       yield(3);
+    //     } else if (event == NavigationEvent.navigateToAudioPage) {
+    //       yield(4);
+    //     } else if (event == NavigationEvent.navigateToBookPage) {
+    //       yield(5);
+    //     } else if (event == NavigationEvent.navigateToProfilePage) {
+    //       yield(6);
+    //     } else if (event == NavigationEvent.navigateToQuizPage) {
+    //       yield(7);
+    //     } else if (event == NavigationEvent.navigateToRatingPage) {
+    //       yield(8);
+    //     }
+    //   },
+    // );
   }
 }
 

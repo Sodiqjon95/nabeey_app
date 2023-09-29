@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:icons_flutter/icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nabeey_app/services/bloc_service.dart';
 
@@ -14,7 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final navigationBloc = BlocProvider.of<NavigationBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -35,7 +33,8 @@ class _HomePageState extends State<HomePage> {
               aspectRatio: 1.7,
               child: GestureDetector(
                 onTap: () {
-                  navigationBloc.add(NavigationEvent.navigateToCategoryPage);
+                  BlocProvider.of<NavigationBloc>(context)
+                      .add(NavigationEvent.navigateToCategoryPage);
                 },
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 20),
