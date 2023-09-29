@@ -121,6 +121,6 @@ class _ArticleSendState extends State<ArticleSend> {
           ],
         ),
       ),
-    );;
+    );
   }
 }

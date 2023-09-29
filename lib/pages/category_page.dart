@@ -221,11 +221,6 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilePage(),
-                        ),
-                      );
                       navigationBloc.add(NavigationEvent.navigateToBookPage);
                     },
                     child: Container(
