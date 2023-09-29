@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class ProfileEdit extends StatefulWidget {
-  const ProfileEdit({super.key});
+class ArticleSend extends StatefulWidget {
+  const ArticleSend({super.key});
 
   @override
-  State<ProfileEdit> createState() => _ProfileEditState();
+  State<ArticleSend> createState() => _ArticleSendState();
 }
 
-class _ProfileEditState extends State<ProfileEdit> {
+class _ArticleSendState extends State<ArticleSend> {
   var numberController = TextEditingController();
   var nameController = TextEditingController();
   var familyController = TextEditingController();
@@ -27,7 +26,6 @@ class _ProfileEditState extends State<ProfileEdit> {
     //   ),
     // );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +67,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               height: 12,
             ),
             const Text(
-              "Familiya",
+              "Text",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -90,71 +88,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                 controller: familyController,
                 style: const TextStyle(color: Colors.black),
                 decoration: const InputDecoration(
+                  helperText: "Matn kiriting",
                     border: InputBorder.none,
                     hintStyle: TextStyle(fontSize: 17, color: Colors.white54)),
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            const Text(
-              "Tel raqam",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(left: 10),
-              height: 52,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  width: 1,
-                  style: BorderStyle.solid,
-                  color: Colors.grey,
-                ),
-              ),
-              child: TextField(
-                controller: numberController,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                style: const TextStyle(color: Colors.black),
-                decoration: const InputDecoration(
-                    hintText: "+998",
-                    border: InputBorder.none,
-                    hintStyle: TextStyle(
-                      fontSize: 14,
-                    )),
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            const Text(
-              "Parol",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(left: 10),
-              height: 52,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  width: 1,
-                  style: BorderStyle.solid,
-                  color: Colors.grey,
-                ),
-              ),
-              child: TextField(
-                controller: passwordController,
-                obscureText: true,
-                style: const TextStyle(color: Colors.black),
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                ),
               ),
             ),
             const SizedBox(
@@ -185,6 +121,6 @@ class _ProfileEditState extends State<ProfileEdit> {
           ],
         ),
       ),
-    );
+    );;
   }
 }

@@ -3,9 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:icons_flutter/icons_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nabeey_app/pages/article_send.dart';
+import 'package:nabeey_app/pages/profile_edit.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+  static const String id = 'profile_page';
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -150,26 +153,36 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 72, left: 20, right: 20),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Feather.edit,color: Color.fromRGBO(245, 156, 22, 1),),
-                      SizedBox(width: 20,),
-                      Text(
-                        "Profilni tahrirlash",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileEdit(),
                   ),
-                  Icon(Feather.chevron_right)
-                ],
+                );
+               // navigationBloc.add(NavigationEvent.navigateToBookPage);
+              },
+              child: Container(
+                margin: const EdgeInsets.only(top: 72, left: 20, right: 20),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Feather.edit,color: Color.fromRGBO(245, 156, 22, 1),),
+                        SizedBox(width: 20,),
+                        Text(
+                          "Profilni tahrirlash",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Icon(Feather.chevron_right)
+                  ],
+                ),
               ),
             ),
             Container(
@@ -177,26 +190,36 @@ class _ProfilePageState extends State<ProfilePage> {
               color: const Color.fromRGBO(0, 0, 0, 0.2),
               height: 1,
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Feather.send,color: Color.fromRGBO(245, 156, 22, 1),),
-                      SizedBox(width: 20,),
-                      Text(
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ArticleSend(),
+                  ),
+                );
+                // navigationBloc.add(NavigationEvent.navigateToBookPage);
+              },
+              child: Container(
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Feather.send,color: Color.fromRGBO(245, 156, 22, 1),),
+                        SizedBox(width: 20,),
+                        Text(
                           "Maqola jo’natish",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                           ),
-                      ),
-                    ],
-                  ),
-                  Icon(Feather.chevron_right)
-                ],
+                        ),
+                      ],
+                    ),
+                    Icon(Feather.chevron_right)
+                  ],
+                ),
               ),
             ),
             Container(
