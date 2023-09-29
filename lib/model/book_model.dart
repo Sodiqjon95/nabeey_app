@@ -1,38 +1,36 @@
-// To parse this JSON data, do
-//
-//     final books = booksFromJson(jsonString);
+//     final bookModel = bookModelFromJson(jsonString);
 
 import 'dart:convert';
 
-Books booksFromJson(String str) => Books.fromJson(json.decode(str));
+BookModel bookModelFromJson(String str) => BookModel.fromJson(json.decode(str));
 
-String booksToJson(Books data) => json.encode(data.toJson());
+String bookModelToJson(BookModel data) => json.encode(data.toJson());
 
-class Books {
+class BookModel {
   int statusCode;
   String message;
-  Data data;
+  List<Datum> data;
 
-  Books({
+  BookModel({
     required this.statusCode,
     required this.message,
     required this.data,
   });
 
-  factory Books.fromJson(Map<String, dynamic> json) => Books(
+  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
     statusCode: json["statusCode"],
     message: json["message"],
-    data: Data.fromJson(json["data"]),
+    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "statusCode": statusCode,
     "message": message,
-    "data": data.toJson(),
+    "data": List<dynamic>.from(data.map((x) => x.toJson())),
   };
 }
 
-class Data {
+class Datum {
   int id;
   String title;
   String author;
@@ -40,7 +38,7 @@ class Data {
   FileClass file;
   FileClass image;
 
-  Data({
+  Datum({
     required this.id,
     required this.title,
     required this.author,
@@ -49,7 +47,7 @@ class Data {
     required this.image,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     id: json["id"],
     title: json["title"],
     author: json["author"],

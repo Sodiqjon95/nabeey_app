@@ -11,6 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List title = ['Payg\'ambarlikdan oldingi davr', 'Payg\'ambarlikni boshlanishi', "Madinadagi davr"];
+  List description = ["Payg'ambarimiz Muhammad Sollallohu alayhi vasallamni dunyoga kelishlari va vahiy nozil bo'lishigacha bo'lgan davr", "Rosululloh Sollallohu alayhi vasallamga vahiy nozil bo'lishi va umumiy Makkadagi davrlari haqida","Rosululloh Sollallohu alayhi vasallamni Madinaga hijratlari va Madinadagi davrlari"];
+  List images = ["assets/images/category_!.png", "assets/images/category2.jpg", "assets/images/category3.jpg"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         margin: const EdgeInsets.only(top: 20),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: 3,
           itemBuilder: (context, i) {
             return AspectRatio(
               aspectRatio: 1.7,
@@ -42,9 +45,8 @@ class _HomePageState extends State<HomePage> {
                   height: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    image: const DecorationImage(
-                      image: NetworkImage(
-                          "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/4ec532c109d74c7953455693d1feadadd53f92ea"),
+                    image: DecorationImage(
+                      image: AssetImage(images[i]),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -56,16 +58,18 @@ class _HomePageState extends State<HomePage> {
                         begin: Alignment.bottomRight,
                         colors: [
                           Color.fromRGBO(0, 0, 0, 1),
+                          Color.fromRGBO(0, 0, 0, 0.8),
+                          Color.fromRGBO(0, 0, 0, 0.6),
                           Color.fromRGBO(0, 0, 0, 0.0),
                         ],
                       ),
                     ),
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Lorem Ipsum',
+                          title[i],
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -73,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Text(
-                          'It is a long established fact',
+                          description[i],
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
