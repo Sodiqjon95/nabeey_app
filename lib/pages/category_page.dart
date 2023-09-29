@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_flutter/icons_flutter.dart';
+import 'package:nabeey_app/pages/article_page.dart';
+import 'package:nabeey_app/pages/audio_page.dart';
+import 'package:nabeey_app/pages/book_page.dart';
+import 'package:nabeey_app/pages/profile_page.dart';
+import 'package:nabeey_app/pages/video_page.dart';
 import 'package:nabeey_app/services/bloc_service.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -221,6 +226,11 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                   GestureDetector(
                     onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilePage(),
+                        ),
+                      );
                       navigationBloc.add(NavigationEvent.navigateToBookPage);
                     },
                     child: Container(
