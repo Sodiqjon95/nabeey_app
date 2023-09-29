@@ -1,13 +1,15 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:icons_flutter/icons_flutter.dart';
 import 'package:nabeey_app/pages/article_page.dart';
 import 'package:nabeey_app/pages/audio_page.dart';
 import 'package:nabeey_app/pages/book_page.dart';
 import 'package:nabeey_app/pages/category_page.dart';
 import 'package:nabeey_app/pages/home_page.dart';
 import 'package:nabeey_app/pages/video_page.dart';
+import 'package:nabeey_app/pages/profile_page.dart';
+import 'package:nabeey_app/pages/btmNavBar.dart';
+import 'package:nabeey_app/pages/quiz_page.dart';
+import 'package:nabeey_app/pages/rating_page.dart';
 
 enum NavigationEvent {
   navigateToHomePage,
@@ -16,46 +18,37 @@ enum NavigationEvent {
   navigateToVideoPage,
   navigateToAudioPage,
   navigateToBookPage,
+  navigateToProfilePage,
+  navigateToQuizPage,
+  navigateToRatingPage,
 }
 
 class NavigationBloc extends Bloc<NavigationEvent, int> {
   NavigationBloc() : super(0) {
-    on<NavigationEvent>((event, emit) {
-      if (event == NavigationEvent.navigateToHomePage) {
-        emit(0);
-      } else if (event == NavigationEvent.navigateToCategoryPage) {
-        emit(1);
-      } else if (event == NavigationEvent.navigateToArticlePage) {
-        emit(2);
-      } else if (event == NavigationEvent.navigateToVideoPage) {
-        emit(3);
-      } else if (event == NavigationEvent.navigateToAudioPage) {
-        emit(4);
-      } else if (event == NavigationEvent.navigateToBookPage) {
-        emit(5);
-      }
-      // Add event handlers for other navigation events as needed
-    });
+    on<NavigationEvent>(
+      (event, emit) {
+        if (event == NavigationEvent.navigateToHomePage) {
+          emit(0);
+        } else if (event == NavigationEvent.navigateToCategoryPage) {
+          emit(1);
+        } else if (event == NavigationEvent.navigateToArticlePage) {
+          emit(2);
+        } else if (event == NavigationEvent.navigateToVideoPage) {
+          emit(3);
+        } else if (event == NavigationEvent.navigateToAudioPage) {
+          emit(4);
+        } else if (event == NavigationEvent.navigateToBookPage) {
+          emit(5);
+        } else if (event == NavigationEvent.navigateToProfilePage) {
+          emit(6);
+        } else if (event == NavigationEvent.navigateToQuizPage) {
+          emit(7);
+        } else if (event == NavigationEvent.navigateToRatingPage) {
+          emit(8);
+        }
+      },
+    );
   }
-
-  // Stream<int> mapEventToState(NavigationEvent event) async* {
-  //   // int pageId = state;
-
-  //   if (event == NavigationEvent.navigateToHomePage) {
-  //     yield 0;
-  //   } else if (event == NavigationEvent.navigateToCategoryPage) {
-  //     yield 1;
-  //   } else if (event == NavigationEvent.navigateToArticlePage) {
-  //     yield 2;
-  //   } else if (event == NavigationEvent.navigateToVideoPage) {
-  //     yield 3;
-  //   } else if (event == NavigationEvent.navigateToAudioPage) {
-  //     yield 4;
-  //   } else if (event == NavigationEvent.navigateToBookPage) {
-  //     yield 5;
-  //   }
-  // yield pageId;
-  // }
 }
 
 class BlocProviderIns {
@@ -82,65 +75,18 @@ class BlocProviderIns {
                     return const AudioPage();
                   case 5:
                     return const BookPage();
+                  case 6:
+                    return const ProfilePage();
+                  case 7:
+                    return const QuizPage();
+                  case 8:
+                    return const RatingPage();
                   default:
                     return Container();
                 }
               },
             ),
-            bottomNavigationBar: Container(
-              height: 60.0,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10.0,
-                    spreadRadius: 5.0,
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
-                ),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 10.0,
-                    sigmaY: 10.0,
-                  ),
-                  child: BottomNavigationBar(
-                    selectedItemColor: const Color(0xFFF59C16),
-                    unselectedItemColor: const Color.fromRGBO(17, 17, 17, 0.5),
-                    showUnselectedLabels: true,
-                    currentIndex: 0,
-                    onTap: (index) {},
-                    items: const [
-                      BottomNavigationBarItem(
-                        icon: Icon(Feather.home),
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Feather.help_circle),
-                        label: 'Quiz',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Feather.activity),
-                        label: 'Rating',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Feather.user),
-                        label: 'Profile',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            bottomNavigationBar: const BtmNavBar(),
           );
         },
       ),

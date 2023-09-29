@@ -107,7 +107,7 @@ class _VideoPageState extends State<VideoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Ustoz#1 videolari",
+                        "Mubashshir Ahmad videolari",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
@@ -200,7 +200,7 @@ class _VideoPageState extends State<VideoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Ustoz#2 videolari",
+                        "Ikrom Sharif videolari",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
