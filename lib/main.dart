@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
       title: 'Nabeey App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(245, 156, 22, 1)),
+
         useMaterial3: true,
       ),
       home: BlocProviderIns().returnBPI(),

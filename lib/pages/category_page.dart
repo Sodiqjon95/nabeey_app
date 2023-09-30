@@ -12,6 +12,7 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  bool tapped = false;
   @override
   Widget build(BuildContext context) {
     final navigationBloc = BlocProvider.of<NavigationBloc>(context);
@@ -26,8 +27,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20)),
               image: DecorationImage(
-                  image: NetworkImage(
-                      "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/4ec532c109d74c7953455693d1feadadd53f92ea"),
+                  image: AssetImage("assets/images/makkah.jpg"),
                   fit: BoxFit.cover),
             ),
             child: Container(
@@ -37,7 +37,9 @@ class _CategoryPageState extends State<CategoryPage> {
                   begin: Alignment.bottomRight,
                   colors: [
                     Color.fromRGBO(0, 0, 0, 1),
-                    Color.fromRGBO(0, 0, 0, 0.0),
+                    Color.fromRGBO(0, 0, 0, 0.9),
+                    Color.fromRGBO(0, 0, 0, 0.8),
+                    Color.fromRGBO(0, 0, 0, 0.1),
                   ],
                 ),
                 borderRadius: BorderRadius.only(
@@ -49,26 +51,43 @@ class _CategoryPageState extends State<CategoryPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Lorem Ipsum",
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
+                      InkWell(
+                        onTap: (){
+                          navigationBloc.add(NavigationEvent.navigateToHomePage);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: const Icon(Icons.arrow_back_ios,color: Colors.white,),
                         ),
                       ),
-                      Text(
-                        "it is long established fact",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
+                      Container(
+                        width: 180,
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Payg'ambarlikdan oldingi davr",
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Text(
+                              "Payg'ambarimiz Muhammad Sollallohu alayhi vasallamni dunyoga kelishlari va vahiy nozil bo'lishigacha bo'lgan davr",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
+                      )
                     ],
                   ),
                   Container(
@@ -79,13 +98,17 @@ class _CategoryPageState extends State<CategoryPage> {
                       borderRadius: BorderRadius.circular(66),
                       color: const Color.fromRGBO(245, 158, 22, 1),
                     ),
-                    child: const Center(
-                      child: Text(
-                        "Take the quiz",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Color.fromRGBO(255, 255, 255, 1),
-                          fontWeight: FontWeight.w500,
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: 22, right: 10, top: 5, bottom: 5),
+                      child: const Center(
+                        child: Text(
+                          "Bilimingizni sinab ko'ring",
+                          style: TextStyle(
+                            //fontSize: 18,
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
@@ -99,17 +122,23 @@ class _CategoryPageState extends State<CategoryPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
+                      setState(() {
+                        tapped = true;
+                      });
                       navigationBloc.add(NavigationEvent.navigateToArticlePage);
+                      setState(() {
+                        tapped = false;
+                      });
                     },
                     child: Container(
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(left: 20, top: 30),
                       height: 120,
-                      width: 168,
+                      width: (MediaQuery.of(context).size.width - 56) / 2,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: tapped ? Colors.orange : Colors.white,
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
@@ -148,7 +177,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(right: 20, top: 30),
                       height: 120,
-                      width: 168,
+                      width: (MediaQuery.of(context).size.width - 56) / 2,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -190,7 +219,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(left: 20, top: 18),
                       height: 120,
-                      width: 168,
+                      width: (MediaQuery.of(context).size.width - 56) / 2,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -227,7 +256,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       padding: const EdgeInsets.only(top: 25, left: 20),
                       margin: const EdgeInsets.only(right: 20, top: 18),
                       height: 120,
-                      width: 168,
+                      width: (MediaQuery.of(context).size.width - 56) / 2,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
