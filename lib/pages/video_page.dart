@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_flutter/icons_flutter.dart';
+
+import '../services/bloc_service.dart';
 
 class VideoPage extends StatefulWidget {
   const VideoPage({super.key});
@@ -22,14 +25,11 @@ class _VideoPageState extends State<VideoPage> {
             width: double.infinity,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
               image: DecorationImage(
-                image: NetworkImage(
-                    "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/4ec532c109d74c7953455693d1feadadd53f92ea"),
-                fit: BoxFit.cover,
-              ),
+                  image: AssetImage("assets/images/makkah.jpg"),
+                  fit: BoxFit.cover),
             ),
             child: Container(
               padding: const EdgeInsets.all(20),
@@ -38,7 +38,9 @@ class _VideoPageState extends State<VideoPage> {
                   begin: Alignment.bottomRight,
                   colors: [
                     Color.fromRGBO(0, 0, 0, 1),
-                    Color.fromRGBO(0, 0, 0, 0.0),
+                    Color.fromRGBO(0, 0, 0, 0.9),
+                    Color.fromRGBO(0, 0, 0, 0.8),
+                    Color.fromRGBO(0, 0, 0, 0.1),
                   ],
                 ),
                 borderRadius: BorderRadius.only(
@@ -50,26 +52,47 @@ class _VideoPageState extends State<VideoPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Lorem Ipsum",
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
+                      InkWell(
+                        onTap: () {
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvent.navigateToCategoryPage);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                      Text(
-                        "Audio",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
+                      Container(
+                        width: 180,
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Payg'ambarlikdan oldingi davr",
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Text(
+                              "Payg'ambarimiz Muhammad Sollallohu alayhi vasallamni dunyoga kelishlari va vahiy nozil bo'lishigacha bo'lgan davr",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
+                      )
                     ],
                   ),
                   Container(
@@ -80,13 +103,17 @@ class _VideoPageState extends State<VideoPage> {
                       borderRadius: BorderRadius.circular(66),
                       color: const Color.fromRGBO(245, 158, 22, 1),
                     ),
-                    child: const Center(
-                      child: Text(
-                        "Take the quiz",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Color.fromRGBO(255, 255, 255, 1),
-                          fontWeight: FontWeight.w500,
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: 22, right: 10, top: 5, bottom: 5),
+                      child: const Center(
+                        child: Text(
+                          "Bilimingizni sinab ko'ring",
+                          style: TextStyle(
+                            //fontSize: 18,
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
@@ -103,28 +130,34 @@ class _VideoPageState extends State<VideoPage> {
                     left: 20,
                     right: 14,
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Mubashshir Ahmad videolari",
+                      const Text(
+                        "Nuriddin Xoliqnazar",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Text(
-                        "Barchasi",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationColor: Color.fromRGBO(245, 156, 22, 1),
-                          decorationThickness: 1.5,
-                          decorationStyle: TextDecorationStyle.solid,
-                          color: Color.fromRGBO(245, 156, 22, 1),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                      GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvent.navigateToYoutubeVideo);
+                        },
+                        child: const Text(
+                          "Barchasi",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            decorationColor: Color.fromRGBO(245, 156, 22, 1),
+                            decorationThickness: 1.5,
+                            decorationStyle: TextDecorationStyle.solid,
+                            color: Color.fromRGBO(245, 156, 22, 1),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -137,20 +170,26 @@ class _VideoPageState extends State<VideoPage> {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 8),
-                            height: 120,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                    image: NetworkImage(
-                                        "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/7d25a268161be4ed1af43b485d04b2568157d19f"),
-                                    fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(15)),
-                            child: const Center(
-                              child: Icon(
-                                FontAwesome.play_circle,
-                                color: Colors.white,
+                          GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<NavigationBloc>(context)
+                                  .add(NavigationEvent.navigateToYoutubeVideo);
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
+                              height: 120,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      image: NetworkImage(
+                                          "https://www.figma.com/file/mm3xkDEmbPovfKyv3zHmv4/image/7d25a268161be4ed1af43b485d04b2568157d19f"),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: const Center(
+                                child: Icon(
+                                  FontAwesome.play_circle,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -200,7 +239,7 @@ class _VideoPageState extends State<VideoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Ikrom Sharif videolari",
+                        "Ikrom Sharif",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,

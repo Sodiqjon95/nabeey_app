@@ -10,6 +10,12 @@ import 'package:nabeey_app/pages/profile_page.dart';
 import 'package:nabeey_app/pages/btmNavBar.dart';
 import 'package:nabeey_app/pages/quiz_page.dart';
 import 'package:nabeey_app/pages/rating_page.dart';
+import 'package:nabeey_app/pages/article2.dart';
+import 'package:nabeey_app/pages/article3.dart';
+import 'package:nabeey_app/pages/videos.dart';
+
+import '../pages/article4.dart';
+import '../pages/articleInside.dart';
 
 enum NavigationEvent {
   navigateToHomePage,
@@ -21,6 +27,11 @@ enum NavigationEvent {
   navigateToProfilePage,
   navigateToQuizPage,
   navigateToRatingPage,
+  navigateToArticlePage2,
+  navigateToArticlePage3,
+  navigateToArticleInside,
+  navigateToArticlePage4,
+  navigateToYoutubeVideo,
 }
 
 class NavigationBloc extends Bloc<NavigationEvent, int> {
@@ -45,6 +56,16 @@ class NavigationBloc extends Bloc<NavigationEvent, int> {
           emit(7);
         } else if (event == NavigationEvent.navigateToRatingPage) {
           emit(8);
+        }else if (event == NavigationEvent.navigateToArticlePage2) {
+          emit(9);
+        }else if (event == NavigationEvent.navigateToArticlePage3) {
+          emit(10);
+        }else if (event == NavigationEvent.navigateToArticleInside) {
+          emit(11);
+        }else if (event == NavigationEvent.navigateToArticlePage4) {
+          emit(12);
+        }else if (event == NavigationEvent.navigateToYoutubeVideo) {
+          emit(13);
         }
       },
     );
@@ -81,6 +102,16 @@ class BlocProviderIns {
                     return const QuizPage();
                   case 8:
                     return const RatingPage();
+                  case 9:
+                    return const Article2();
+                  case 10:
+                    return const Article3();
+                  case 11:
+                    return const ArticleInside();
+                  case 12:
+                    return const Article4();
+                  case 13:
+                    return const Videos();
                   default:
                     return Container();
                 }
