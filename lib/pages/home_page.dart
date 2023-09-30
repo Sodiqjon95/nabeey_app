@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:icons_flutter/icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nabeey_app/services/bloc_service.dart';
 
@@ -12,12 +11,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List title = ['Payg\'ambarlikdan oldingi davr', 'Payg\'ambarlikni boshlanishi', "Madinadagi davr"];
-  List description = ["Payg'ambarimiz Muhammad Sollallohu alayhi vasallamni dunyoga kelishlari va vahiy nozil bo'lishigacha bo'lgan davr", "Rosululloh Sollallohu alayhi vasallamga vahiy nozil bo'lishi va umumiy Makkadagi davrlari haqida","Rosululloh Sollallohu alayhi vasallamni Madinaga hijratlari va Madinadagi davrlari"];
-  List images = ["assets/images/category_!.png", "assets/images/category2.jpg", "assets/images/category3.jpg"];
+  List title = [
+    'Payg\'ambarlikdan oldingi davr',
+    'Payg\'ambarlikni boshlanishi',
+    "Madinadagi davr"
+  ];
+  List description = [
+    "Payg'ambarimiz Muhammad Sollallohu alayhi vasallamni dunyoga kelishlari va vahiy nozil bo'lishigacha bo'lgan davr",
+    "Rosululloh Sollallohu alayhi vasallamga vahiy nozil bo'lishi va umumiy Makkadagi davrlari haqida",
+    "Rosululloh Sollallohu alayhi vasallamni Madinaga hijratlari va Madinadagi davrlari"
+  ];
+  List images = [
+    "assets/images/makkah.jpg",
+    "assets/images/categoryy2.jpg",
+    "assets/images/madina1.jpg"
+  ];
   @override
   Widget build(BuildContext context) {
-    final navigationBloc = BlocProvider.of<NavigationBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -35,10 +45,11 @@ class _HomePageState extends State<HomePage> {
           itemCount: 3,
           itemBuilder: (context, i) {
             return AspectRatio(
-              aspectRatio: 1.7,
+              aspectRatio: 1.4,
               child: GestureDetector(
                 onTap: () {
-                  navigationBloc.add(NavigationEvent.navigateToCategoryPage);
+                  BlocProvider.of<NavigationBloc>(context)
+                      .add(NavigationEvent.navigateToCategoryPage);
                 },
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 20),
@@ -60,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                         colors: [
                           Color.fromRGBO(0, 0, 0, 1),
                           Color.fromRGBO(0, 0, 0, 0.8),
-                          Color.fromRGBO(0, 0, 0, 0.6),
+                          Color.fromRGBO(0, 0, 0, 0.5),
                           Color.fromRGBO(0, 0, 0, 0.0),
                         ],
                       ),
@@ -71,17 +82,17 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           title[i],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                         Text(
                           description[i],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
