@@ -11,9 +11,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List title = ['Payg\'ambarlikdan oldingi davr', 'Payg\'ambarlikni boshlanishi', "Madinadagi davr"];
-  List description = ["Payg'ambarimiz Muhammad Sollallohu alayhi vasallamni dunyoga kelishlari va vahiy nozil bo'lishigacha bo'lgan davr", "Rosululloh Sollallohu alayhi vasallamga vahiy nozil bo'lishi va umumiy Makkadagi davrlari haqida","Rosululloh Sollallohu alayhi vasallamni Madinaga hijratlari va Madinadagi davrlari"];
-  List images = ["assets/images/category_!.png", "assets/images/category2.jpg", "assets/images/category3.jpg"];
+  List title = [
+    'Payg\'ambarlikdan oldingi davr',
+    'Payg\'ambarlikni boshlanishi',
+    "Madinadagi davr"
+  ];
+  List description = [
+    "Payg'ambarimiz Muhammad Sollallohu alayhi vasallamni dunyoga kelishlari va vahiy nozil bo'lishigacha bo'lgan davr",
+    "Rosululloh Sollallohu alayhi vasallamga vahiy nozil bo'lishi va umumiy Makkadagi davrlari haqida",
+    "Rosululloh Sollallohu alayhi vasallamni Madinaga hijratlari va Madinadagi davrlari",
+  ];
+  List images = [
+    "assets/images/category_!.png",
+    "assets/images/category2.jpg",
+    "assets/images/category3.jpg",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           title[i],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
@@ -78,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Text(
                           description[i],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
